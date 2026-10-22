@@ -1,0 +1,19 @@
+# Set default behavior to automatically normalize line endings
+* text=auto eol=lf
+
+# Explicit binary files
+*.dll binary
+*.so binary
+*.dylib binary
+*.exe binary
+*.obj binary
+*.lib binary
+*.jar binary
+*.png binary
+*.jpg binary
+*.ico binary
+
+# Shell scripts
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
