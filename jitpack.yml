@@ -1,2 +1,4 @@
 jdk:
-  - openjdk17
+  - openjdk25
+install:
+  - mvn clean package -DskipTests
