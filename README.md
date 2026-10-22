@@ -134,11 +134,7 @@ Benchmark.benchmarkRenderText   thrpt    3   0,557 ±   3,825  ops/ms
 
 > **33.6 Million Text Measurements per Second**: Subpixel OpenType layout parsing executes in **~37 nanoseconds** directly via `IDWriteTextLayout`. Glyph rasterization into off-heap Arena memory bypasses JVM heap allocation entirely, eliminating garbage collection pressure.
 
-*Run the benchmarks locally:*
-```powershell
-.\run-benchmark.bat
-```
-*Measured on Windows 11 x64, AMD Ryzen 9, GraalVM JDK 25.*
+*Measured on Microsoft Surface Pro 8 (Windows 11 x64, 11th Gen Intel Core i5-1135G7 @ 2.40GHz, GraalVM JDK 25).*
 
 ---
 
