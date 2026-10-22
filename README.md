@@ -154,8 +154,6 @@ DirectWrite layout and rasterization performance measured on Windows 11 (AMD Ryz
 
 ## Installation
 
-FastJava modules are distributed via JitPack and pre-built GitHub releases.
-
 ### Option 1: Maven (Recommended via JitPack)
 
 Add the JitPack repository and dependencies to your `pom.xml`:
@@ -206,16 +204,6 @@ Download the latest pre-compiled JARs directly from the GitHub Releases:
 
 1. 📦 [**FastDirectWrite-0.1.0.jar**](https://github.com/andrestubbe/FastDirectWrite/releases/download/0.1.0/FastDirectWrite-0.1.0.jar)
 2. 📦 [**FastCore-0.1.1.jar**](https://github.com/andrestubbe/FastCore/releases/download/0.1.1/FastCore-0.1.1.jar) *(Required Native FFM Loader)*
-
-### Option 4: Build from Source
-
-```powershell
-# 1. Build native DLL (requires MSVC C++17)
-.\compile.bat
-
-# 2. Package JAR
-mvn clean package -DskipTests
-```
 
 ---
 
