@@ -53,7 +53,7 @@ public class Demo {
 - [Architecture Overview](#architecture-overview)
 - [Performance Benchmarks](#performance-benchmarks)
 - [API Quick Reference](#api-quick-reference)
-- [Interactive Demo](#interactive-demo)
+- [Technical Demos & Benchmarks](#technical-demos--benchmarks)
 - [Installation](#installation)
 - [Documentation](#documentation)
 - [Platform Support](#platform-support)
@@ -143,27 +143,28 @@ DirectWrite layout and rasterization performance measured on Windows 11 (AMD Ryz
 
 ---
 
-## Interactive Demo
+## Technical Demos & Benchmarks
 
-Run the interactive hardware-accelerated Windows 11 typography demo:
+| Case | Java Example | Launcher | Description |
+|:---|:---|:---|:---|
+| **Interactive Showcase Demo** | [Demo.java](examples/Demo/src/main/java/fastdirectwrite/demo/Demo.java) | `run-demo.bat` | End-to-end interactive Windows 11 typography demo with `FastDirectX` & `FastWindow`. |
+| **JMH Microbenchmark Suite** | [Benchmark.java](examples/Benchmark/src/main/java/fastdirectwrite/benchmark/Benchmark.java) | `run-benchmark.bat` | Formal OpenJDK JMH throughput measurements across layout & off-heap rasterization. |
 
-```powershell
-cd FastDirectWrite
-.\run-demo.bat
-```
-
-Demonstrates:
-- Native Windows 11 Mica / Dark Mode window creation via `FastWindow`
-- Hardware DirectX 11 swapchain initialization via `FastDirectX`
-- Dynamic subpixel rendering of `Segoe UI Variable Display`, `Segoe UI Variable Text`, `Segoe UI Variable Small`, and `Cascadia Code`.
+> [!IMPORTANT]
+> **Standardized File Naming**:
+> - The JMH microbenchmark harness file and class is named `Benchmark.java` (located under `examples/Benchmark/src/main/java/fastdirectwrite/benchmark/Benchmark.java`).
+> - The primary interactive demo file and class is named `Demo.java` (located under `examples/Demo/src/main/java/fastdirectwrite/demo/Demo.java`).
 
 ---
 
 ## Installation
 
-### Maven (via JitPack)
+FastJava modules are distributed via JitPack and pre-built GitHub releases.
 
-Add JitPack repository:
+### Option 1: Maven (Recommended via JitPack)
+
+Add the JitPack repository and dependencies to your `pom.xml`:
+
 ```xml
 <repositories>
     <repository>
@@ -171,33 +172,72 @@ Add JitPack repository:
         <url>https://jitpack.io</url>
     </repository>
 </repositories>
+
+<dependencies>
+    <!-- FastDirectWrite Core Library -->
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastDirectWrite</artifactId>
+        <version>0.1.0</version>
+    </dependency>
+
+    <!-- FastCore (Required Native FFM Loader) -->
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastCore</artifactId>
+        <version>0.1.1</version>
+    </dependency>
+</dependencies>
 ```
 
-Add dependency:
-```xml
-<dependency>
-    <groupId>com.github.andrestubbe</groupId>
-    <artifactId>FastDirectWrite</artifactId>
-    <version>0.1.0</version>
-</dependency>
+### Option 2: Gradle (via JitPack)
+
+Add this to your `build.gradle`:
+
+```groovy
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.andrestubbe:FastDirectWrite:0.1.0'
+    implementation 'com.github.andrestubbe:FastCore:0.1.1'
+}
+```
+
+### Option 3: Direct Download (Pre-built JAR)
+
+Download the latest pre-compiled JARs directly from the GitHub Releases:
+
+1. 📦 [**FastDirectWrite-0.1.0.jar**](https://github.com/andrestubbe/FastDirectWrite/releases/download/0.1.0/FastDirectWrite-0.1.0.jar)
+2. 📦 [**FastCore-0.1.1.jar**](https://github.com/andrestubbe/FastCore/releases/download/0.1.1/FastCore-0.1.1.jar) *(Required Native FFM Loader)*
+
+### Option 4: Build from Source
+
+```powershell
+# 1. Build native DLL (requires MSVC C++17)
+.\compile.bat
+
+# 2. Package JAR
+mvn clean package -DskipTests
 ```
 
 ---
 
 ## Documentation
 
-- **[CHANGELOG.md](docs/CHANGELOG.md)**: Release notes and version history.
-- **[REFERENCE.md](docs/REFERENCE.md)**: Full API reference manual.
-- **[PHILOSOPHY.md](docs/PHILOSOPHY.md)**: Engineering rationale for zero-AWT architecture.
-- **[COMPILE.md](docs/COMPILE.md)**: Compilation instructions for native DLL and JAR.
-- **[ROADMAP.md](docs/ROADMAP.md)**: Future milestones and planned features.
+- **[REFERENCE.md](docs/REFERENCE.md)**: Full API descriptions, FFM downcalls, and memory layouts.
+- **[PHILOSOPHY.md](docs/PHILOSOPHY.md)**: Engineering rationale for zero-AWT and native-first typography.
+- **[ROADMAP.md](docs/ROADMAP.md)**: Future development milestones and planned features.
+- **[CHANGELOG.md](docs/CHANGELOG.md)**: Version history, release notes, and migration guides.
+- **[COMPILE.md](docs/COMPILE.md)**: Compilation guide for C++ native libraries and Java sources.
 
 ---
 
 ## Platform Support
 
 | Platform | Architecture | Status | Notes |
-|:---|:---|:---:|:---|
+|:---|:---:|:---:|:---|
 | Windows 11 | x64 | ✅ Fully Supported | Native DirectWrite & Direct2D Subpixel ClearType |
 | Windows 10 | x64 | ✅ Fully Supported | Native DirectWrite & Direct2D |
 | Linux / macOS | x64, ARM64 | 🚧 N/A | Windows-specific native subsystem |
