@@ -150,11 +150,6 @@ DirectWrite layout and rasterization performance measured on Windows 11 (AMD Ryz
 | **Interactive Showcase Demo** | [Demo.java](examples/Demo/src/main/java/fastdirectwrite/demo/Demo.java) | `run-demo.bat` | End-to-end interactive Windows 11 typography demo with `FastDirectX` & `FastWindow`. |
 | **JMH Microbenchmark Suite** | [Benchmark.java](examples/Benchmark/src/main/java/fastdirectwrite/benchmark/Benchmark.java) | `run-benchmark.bat` | Formal OpenJDK JMH throughput measurements across layout & off-heap rasterization. |
 
-> [!IMPORTANT]
-> **Standardized File Naming**:
-> - The JMH microbenchmark harness file and class is named `Benchmark.java` (located under `examples/Benchmark/src/main/java/fastdirectwrite/benchmark/Benchmark.java`).
-> - The primary interactive demo file and class is named `Demo.java` (located under `examples/Demo/src/main/java/fastdirectwrite/demo/Demo.java`).
-
 ---
 
 ## Installation
